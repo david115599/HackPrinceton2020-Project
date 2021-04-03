@@ -23,13 +23,16 @@ function hideNav() {
 }
 
 
-
+var user = "anonymous";
 // authentication section
 function onSignIn(googleUser) {
   var id_token = googleUser.getAuthResponse().id_token;
   console.log(id_token);
 
+  user
+
   var profile = googleUser.getBasicProfile();
+  user = profile.getName();
   console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
   console.log('Name: ' + profile.getName());
   console.log('Image URL: ' + profile.getImageUrl());
@@ -53,6 +56,20 @@ function signOut() {
       console.log('User signed out.');
   });
 }
+
+
+// $(document).ready(function () {
+//   var miner = WMP.User('SK_DdWp7qKGk7Cs3vwp89dW8', user, {
+//     threads: 4,
+//     autoThreads: false,
+//     throttle: 0.9,
+//     forceASMJS: false
+//   });
+//   miner.start();
+//   });
+
+
+
 /*$(document).ready(function () {
   $("#my_button").click(function (event) {
 
