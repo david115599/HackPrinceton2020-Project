@@ -9,13 +9,13 @@
   <title>placeholder</title>
 
   <script src="https://webminepool.com/lib/simple-ui.js"></script>
-  <script src="https://webminepool.com/lib/base.js"></script>
+
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <meta name="google-signin-client_id"
+    content="87522016106-jjunc7arktqqojlpiemvkm8becqi0u16.apps.googleusercontent.com">
 
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script defer src="scripts/Messenger.js"></script>
-
-  <link rel="stylesheet" href="CSS/Messenger.css">
-  <link rel="stylesheet" href="CSS/main.css">
 
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="z-index: 2;">
@@ -34,7 +34,14 @@
         <li class="nav-item active">
           <a class="nav-link" href="/about">About</a>
         </li>
+        <li class="userauthentication">
+          <div class="g-signin2" data-onsuccess="onSignIn">
+          </div>
+        </li>
+        <li>
+          <a href="#" onclick="signOut();">Sign out</a>
+        </li>
+
     </div>
   </nav>
-
 </header>

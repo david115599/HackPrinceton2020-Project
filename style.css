@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Montserrat;
+  margin: 2em 1em;
+  line-height: 1.5em;
+  background-color: #222222;
+  color: #fefefe;
+  text-align: center;
+}
+
+button {
+  font-family: Montserrat;
+  font-size: 18px; 
+}
+
+.logo {
+  width: 162px;
+  height: 70px;
+  left: 72px;
+  top: 20px;
+  float: left;
+  padding: 10px;
+}
+
+.action {
+  float: right;
+  background-color: #333333;
+  color: #fefefe;
+  border: 1px solid #333333;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.main_action {
+  float: left;
+  background: #BC4A70;
+  color: #fefefe;
+  border: 1px solid #333333;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 20px;
+  margin-left: 30px;
+}
+
+.secondary_action {
+  float: left;
+  background-color: #333333;
+  color: #fefefe;
+  border: 1px solid #333333;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 20px;
+  margin-left: 30px;
+  text-align: center;
+}
+
+.description {
+padding: 30px;
+background: rgba(0, 0, 0, 0.3);
+border-radius: 36px;
+margin: 20px;  
+}
