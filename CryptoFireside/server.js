@@ -4,6 +4,10 @@ var favicon = require('serve-favicon');
 var app = express();
 var methodOverride = require('method-override');
 const apirequest = require('request');
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
+
 let rawvideos = fs.readFileSync('videos.json');
 let videos = JSON.parse(rawvideos);
 
@@ -11,9 +15,10 @@ var CLIENT_ID = "87522016106-jjunc7arktqqojlpiemvkm8becqi0u16.apps.googleusercon
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(CLIENT_ID);
 
+const rooms = { };
 
 app.use(methodOverride('_method'));
-app.use(express.urlencoded());
+app.use(express.urlencoded({extended: true}));
 
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
@@ -21,14 +26,23 @@ app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/images/logo.png'));
 
 var port = process.env.PORT || 3000; //||8000
-app.listen(port, function(){
+server.listen(port, function(){
   console.log('Easy server listening for requests on port '+ port+'!');
 });
 
 app.get('/', function(request, response){
+//console.log(videos);
+  var feedback = {
+    "videos":videos.videos,
+    "rooms":rooms
+  };
+  // for(i in feedback.videos){
+  //   console.log(feedback.videos[i]);
+  // }
+
   response.status(200);
   response.setHeader('Content-Type', 'text/html')
-  response.render('index',{feedback:videos.videos});
+  response.render('index',{feedback});
 //console.log(videos.videos);
 });
 
@@ -48,3 +62,45 @@ app.get('/about', function(request, response){
   response.setHeader('Content-Type', 'text/html')
   response.render('about',{feedback:""});
 });
+
+
+app.post('/room', (req, res) => {
+  if (rooms[req.body.room] != null) {
+    return res.redirect('/')
+  }
+  rooms[req.body.room] = { users: {} }
+  res.redirect(req.body.room)
+  // Send message that new room was created
+  io.emit('room-created', req.body.room)
+})
+
+app.get('/:room', (req, res) => {
+  if (rooms[req.params.room] == null) {
+    return res.redirect('/')
+  }
+  res.render('room', { roomName: req.params.room })
+})
+
+io.on('connection', socket => {
+  socket.on('new-user', (room, name) => {
+    socket.join(room)
+    rooms[room].users[socket.id] = name
+    socket.to(room).broadcast.emit('user-connected', name)
+  })
+  socket.on('send-chat-message', (room, message) => {
+    socket.to(room).broadcast.emit('chat-message', { message: message, name: rooms[room].users[socket.id] })
+  })
+  socket.on('disconnect', () => {
+    getUserRooms(socket).forEach(room => {
+      socket.to(room).broadcast.emit('user-disconnected', rooms[room].users[socket.id])
+      delete rooms[room].users[socket.id]
+    })
+  })
+})
+
+function getUserRooms(socket) {
+  return Object.entries(rooms).reduce((names, [name, room]) => {
+    if (room.users[socket.id] != null) names.push(name)
+    return names
+  }, [])
+}
