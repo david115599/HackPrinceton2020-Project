@@ -11,6 +11,8 @@
   "dependencies": {
     "ejs": "^2.6.1",
     "express": "^4.17.1",
+    "firebase": "^8.3.2",
+    "firebaseui": "^4.8.0",
     "google-auth-library": "^7.0.3",
     "serve-favicon": "^2.5.0",
     "socket.io": "^2.2.0"
