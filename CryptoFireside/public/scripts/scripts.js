@@ -21,7 +21,7 @@ function hideNav() {
   document.querySelector('.main-content').style.marginLeft = "0px";
 }
 
-$(document).ready(function () {
+/*$(document).ready(function () {
   $("#my_button").click(function (event) {
 
     var apiKey = 'wvz6nlmPtKUxSUTEDqeDaJpO1Wkv8jC6zpEQZups';
@@ -72,4 +72,4 @@ selectElement.addEventListener('change', (event) => {
     }
     $('#years').html(content);
   }
-});
+});*/
