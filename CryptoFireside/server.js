@@ -1,12 +1,9 @@
-var express = require('express');
+const express = require('express')
+const app = express()
+const server = require('http').Server(app)
+const io = require('socket.io')(server)
 var fs = require('fs');
 var favicon = require('serve-favicon');
-var app = express();
-var methodOverride = require('method-override');
-const apirequest = require('request');
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-
 
 let rawvideos = fs.readFileSync('videos.json');
 let videos = JSON.parse(rawvideos);
@@ -17,52 +14,54 @@ const client = new OAuth2Client(CLIENT_ID);
 
 const rooms = { };
 
-app.use(methodOverride('_method'));
-app.use(express.urlencoded({extended: true}));
-
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/images/logo.png'));
+app.use(express.urlencoded({extended: true}));
 
-var port = process.env.PORT || 3000; //||8000
-server.listen(port, function(){
-  console.log('Easy server listening for requests on port '+ port+'!');
+server.listen(3000, function(){
+  console.log('socket server listening for requests on port 3000!');
 });
+
+// app.get('/', (req, res) => {
+//   res.render('index', { rooms: rooms })
+// })
 
 app.get('/', function(request, response){
-//console.log(videos);
-  var feedback = {
-    "videos":videos.videos,
-    "rooms":rooms
-  };
-  // for(i in feedback.videos){
-  //   console.log(feedback.videos[i]);
-  // }
+  //console.log(videos);
+    var feedback = {
+      "videos":videos.videos,
+      "rooms":rooms
+    };
+    // for(i in feedback.videos){
+    //   console.log(feedback.videos[i]);
+    // }
+  
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render('index',{feedback});
+  //console.log(videos.videos);
+  });
 
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('index',{feedback});
-//console.log(videos.videos);
-});
-
+  
 app.post('/tokensignin', function(request, body){
-console.log(request.body.id_token);
-});
-
-
-app.get('/logout', function(request, response){
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('index',{feedback:""});
-});
-
-app.get('/about', function(request, response){
-  response.status(200);
-  response.setHeader('Content-Type', 'text/html')
-  response.render('about',{feedback:""});
-});
-
+  console.log(request.body.id_token);
+  });
+  
+  
+  app.get('/logout', function(request, response){
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render('index',{feedback:""});
+  });
+  
+  app.get('/about', function(request, response){
+    response.status(200);
+    response.setHeader('Content-Type', 'text/html')
+    response.render('about',{feedback:""});
+  });
+  
 
 app.post('/room', (req, res) => {
   if (rooms[req.body.room] != null) {
@@ -80,6 +79,7 @@ app.get('/:room', (req, res) => {
   }
   res.render('room', { roomName: req.params.room })
 })
+
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
