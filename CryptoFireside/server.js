@@ -79,7 +79,11 @@ app.get('/:room', (req, res) => {
   if (rooms[req.params.room] == null) {
     return res.redirect('/')
   }
-  res.render('room', { roomName: req.params.room })
+  var feedback = {
+    "videos":videos.videos,
+    "roomName":req.params.room
+  };
+  res.render('room', { feedback })
 })
 
 server.listen(3000)
