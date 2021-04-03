@@ -5,6 +5,8 @@ const io = require('socket.io')(server)
 var fs = require('fs');
 var favicon = require('serve-favicon');
 
+
+
 let rawvideos = fs.readFileSync('videos.json');
 let videos = JSON.parse(rawvideos);
 
@@ -14,15 +16,15 @@ const client = new OAuth2Client(CLIENT_ID);
 
 const rooms = { };
 
+
+
+
 app.use(express.static('public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(favicon(__dirname + '/public/images/logo.png'));
 app.use(express.urlencoded({extended: true}));
 
-server.listen(3000, function(){
-  console.log('socket server listening for requests on port 3000!');
-});
 
 // app.get('/', (req, res) => {
 //   res.render('index', { rooms: rooms })
@@ -80,6 +82,7 @@ app.get('/:room', (req, res) => {
   res.render('room', { roomName: req.params.room })
 })
 
+server.listen(3000)
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
