@@ -1,14 +1,13 @@
 
 .messenger {
-  top: 0vh;
-  height: 40vh;
-  width: 20%;
-  z-index: 1;
-  left: 0;
-  background-color: rgb(193, 206, 218);
+  position: fixed;
+  top: 7vh;
+  height: 90vh;
+  width: 15%;
+  right: 0;
 }
   #message-container {
-    width: 80%;
+    width: 15%;
     max-width: 1200px;
   }
 
@@ -26,8 +25,10 @@
     bottom: 0;
     background-color: white;
     max-width: 1200px;
-    width: 80%;
+    width: 15%;
     display: flex;
+    position: fixed;
+    right: 0;
   }
 
   #message-input {

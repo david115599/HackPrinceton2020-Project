@@ -1,0 +1,13 @@
+.spot {
+    position: fixed;
+    bottom: 7vh;
+    height: 8%;
+    width: 40%;
+    z-index: 1;
+    left: 15%;
+  }
+  .guiminer {
+    position: fixed;
+    bottom: 7vh;
+    right: 15%;
+  }
