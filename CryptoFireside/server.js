@@ -7,6 +7,10 @@ const apirequest = require('request');
 let rawvideos = fs.readFileSync('videos.json');
 let videos = JSON.parse(rawvideos);
 
+var CLIENT_ID = "87522016106-jjunc7arktqqojlpiemvkm8becqi0u16.apps.googleusercontent.com";
+const {OAuth2Client} = require('google-auth-library');
+const client = new OAuth2Client(CLIENT_ID);
+
 
 app.use(methodOverride('_method'));
 app.use(express.urlencoded());
@@ -28,46 +32,25 @@ app.get('/', function(request, response){
 //console.log(videos.videos);
 });
 
-app.post('/view', function(request, responsea, body){
-  var options = {
-    url: 'https://api.propublica.org/congress/v1/'+request.body.year+'/senate/members.json',
-    json: true,
-    headers: {
-      "X-API-Key": "wvz6nlmPtKUxSUTEDqeDaJpO1Wkv8jC6zpEQZups"
-    }
-  }
-  var options2 = {
-    url: 'https://api.propublica.org/congress/v1/'+request.body.year+'/house/members.json',
-    json: true,
-    headers: {
-      "X-API-Key": "wvz6nlmPtKUxSUTEDqeDaJpO1Wkv8jC6zpEQZups"
-    }
-  }
-  if (request.body.sh == "1") {
+app.post('/tokensignin', function(request, body){
+console.log(request.body.id_token);
 
-    apirequest.get(options2, function(error, response, body) {
-      console.error('error:', error); // Print the error if one occurred
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-      //console.log('body:', body.results[0].members); // Print the HTML for the Google homepage.
-      responsea.status(200);
-      responsea.setHeader('Content-Type', 'text/html')
-      responsea.render('politicians',{feedback:body.results[0]});
-
-    });
-  }
-  else if(request.body.sh == "0") {
-
-  apirequest.get(options, function(error, response, body) {
-    console.error('error:', error); // Print the error if one occurred
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    //console.log('body:', body.results[0].members); // Print the HTML for the Google homepage.
-    responsea.status(200);
-    responsea.setHeader('Content-Type', 'text/html')
-    responsea.render('politicians',{feedback:body.results[0]});
-  });}
-
-
+  // async function verify() {
+  //   const ticket = await client.verifyIdToken({
+  //       idToken: token,
+  //       audience: CLIENT_ID,  // Specify the CLIENT_ID of the app that accesses the backend
+  //       // Or, if multiple clients access the backend:
+  //       //[CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]
+  //   });
+  //   const payload = ticket.getPayload();
+  //   const userid = payload['sub'];
+  //   // If request specified a G Suite domain:
+  //   // const domain = payload['hd'];
+  // }
+  // verify().catch(console.error);
+  
 });
+
 
 app.get('/logout', function(request, response){
   response.status(200);

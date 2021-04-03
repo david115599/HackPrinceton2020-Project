@@ -6,6 +6,7 @@
   "dependencies": {
     "ejs": "^2.7.4",
     "express": "^4.17.1",
+    "google-auth-library": "^7.0.3",
     "jquery": "^3.4.1",
     "method-override": "^3.0.0",
     "node": "^13.10.1",

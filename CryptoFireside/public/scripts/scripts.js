@@ -14,6 +14,7 @@ openBtn.addEventListener("click", () => {
 function showNav() {
   document.querySelector(".sideNav").style.width = "300px";
   document.querySelector('.main-content').style.marginLeft = "300px";
+  console.log('test');
 }
 
 function hideNav() {
@@ -21,6 +22,37 @@ function hideNav() {
   document.querySelector('.main-content').style.marginLeft = "0px";
 }
 
+
+
+// authentication section
+function onSignIn(googleUser) {
+  var id_token = googleUser.getAuthResponse().id_token;
+  console.log(id_token);
+
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+
+  var data = {"id_token":id_token};
+  var requestURL = '/tokensignin';
+
+  $.ajax({
+    type: "POST",
+    url: requestURL,
+    data: data,
+    dataType: "json"
+  });
+
+}
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+      console.log('User signed out.');
+  });
+}
 /*$(document).ready(function () {
   $("#my_button").click(function (event) {
 
