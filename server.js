@@ -102,7 +102,7 @@ app.get('/:room', (req, res) => {
 })
 
 
-server.listen(3000)
+server.listen(8080)
 
 io.on('connection', socket => {
   socket.on('new-user', (room, name) => {
