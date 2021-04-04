@@ -1,15 +1,18 @@
 .spot {
     position: fixed;
-    bottom: 7vh;
+    top: 80%;
     height: 8%;
-    width: 40%;
+    width: 60%;
     z-index: 1;
-    left: 15%;
-  }
+    left: 7.5%;
+    border-radius: 20px;
+
+}
+
   .guiminer {
-    position: relative;
+    position: fixed;
     bottom: 0;
-    left: 20%;
+    left: 10%;
   }
 
 html{
@@ -134,10 +137,10 @@ html{
   .topnav {
     background-color: #000000;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    overflow: hidden;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+    z-index: 99;
   }
   
   .topnav a {
@@ -147,24 +150,27 @@ html{
     padding: 27px;
     text-decoration: none;
     font-size: 17px;
+    z-index: 99;
   }
   
   /* Change the color of links on hover */
   .topnav a:hover {
     background-color: #ddd;
     color: black;
+    z-index: 99;
   }
   
   /* Add a color to the active/current link */
   .topnav a.active {
     background-color: #333333;
     color: white;
+    z-index: 99;
   }
   
   /* The dropdown container */
   .dropdown {
     float: left;
-    overflow: hidden;
+    z-index: 99;
   }
   
   /* Dropdown button */
@@ -193,7 +199,7 @@ html{
     background-color: #666666;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    z-index: 3;
   }
   
   /* Links inside the dropdown */
@@ -342,15 +348,27 @@ width: 100%;
     top: 10vh;
 }
 
-
 #carousel{
     position: relative;
     width: 60%;
-    margin: auto;
+    left: 7.5%;
+}
+
+.landingpage{
+    position: relative;
+    width: 60%;
+    left: 7.5%;
+}
+#carousel2{
+    position: relative;
+    width: 60%;
+    left: 7.5%;
+    top:  1.8vh;
 }
 
 .ytframe{
     height: 60vh;
     border-radius: 10px;
     border-color: transparent;
+    z-index: 1;
 }

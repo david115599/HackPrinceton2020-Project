@@ -17,7 +17,7 @@
         <br>
         <br>
     
-        <h1>
+        <h1 class = "landingpage">
           Popular Videos
         </h1>
       
@@ -29,15 +29,15 @@
       <%}%>
   </ol>
   <div class="carousel-inner">
-    <div class="carousel-item active">
-      <iframe  class = "ytframe"  id="player" width="100%%" height="100%" src="<%=feedback.videos[0].url%>">
+    <a href="/video/:<%=feedback.videos[0].url%>"></a><div class="carousel-item active">
+     <iframe  class = "ytframe"  id="player" width="100%%" height="100%" src="<%=feedback.videos[0].url%>">
       </iframe>
-    </div>
+    </div></a>
     <% for (var i =1; i < feedback.videos.length;  i++ ) { %>
-      <div class="carousel-item">
-        <iframe class = "ytframe" id="player" width="100%%" height="100%" src="<%=feedback.videos[i].url%>">
+      <a href="/video/:<%=feedback.videos[0].url%>"></a><div class="carousel-item">
+       <iframe class = "ytframe" id="player" width="100%%" height="100%" src="<%=feedback.videos[i].url%>">
         </iframe>
-      </div>
+      </div></a>
       <%}%>
   </div>
   <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
@@ -50,21 +50,16 @@
   </a>
 </div>
    
-          <h1>
+          <h1 class = "landingpage">
             Add a New Video
           </h1>
-          
-          <p>
+          <form  class = "landingpage" action="/video/:">
             <label for="url">Enter a youtube embeded url video link:</label>
-          </p>
-      
-      <input type="url" name="url" id="url" placeholder="https://www.youtube.com/embed/placeholder" pattern="https://www.youtube.com/embed/.*" size="30" required="">
-          
-          <br>
-          <br>
-          <button class="main_action2">Play video</button>
-        
-      
+            <input type="url" name="url" id="url" placeholder="https://www.youtube.com/embed/<video_ID>" pattern="https://www.youtube.com/embed/.*" size="30" required="">
+            <br>
+            <input class="main_action2" type="submit" value="Play video">
+          </form>
+
       </body>
 <div class = "messenger">
     <div id="room-container">

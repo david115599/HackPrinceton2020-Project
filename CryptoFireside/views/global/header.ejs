@@ -15,6 +15,7 @@
   <script defer src="http://localhost:3000/socket.io/socket.io.js"></script>
   <script defer src="scripts/Messenger.js"></script>
 
+
   <link rel="stylesheet" href="CSS/Messenger.css">
   <link rel="stylesheet" href="CSS/main.css">
 
@@ -23,19 +24,22 @@
     <img class="logo" src="images/logo.png">
     <a class="active" href="/index"><i class="fa fa-fw fa-home"></i>Home</a>
     <a href="/favourites"><i class="fa fa-fw fa-heart"></i>Favourites</a>
+
+
     <div class="dropdown">
-      <button class="dropbtn">
+      <button class="dropbtn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <i class="fa fa-fw fa-bitcoin"></i>Mining Stats
-        <i class="fa fa-caret-down"></i>
       </button>
-      <div class="dropdown-content">
-        <ul>
-          <li><i class="fa fa-fw fa-speed"></i>Hashrate</li>
-          <li><i class="fa fa-fw fa-bitcoin"></i>Balance</li>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item bg-secondary text-white" href="#"><i class="fa fa-fw fa-speed"></i>Hashrate: <div id = "hashrate"></div> </a>
+        <a class="dropdown-item bg-secondary text-white" href="#"><i class="fa fa-fw fa-bitcoin"></i>Balance: <div id = "balance"></div></a>
+      </div>
+    </div>
         </ul>
       </div>
     </div>
-    <input type="text" placeholder="Search..">
+
+    
     <a style="float:right" href="/"><i class="fa fa-fw fa-user"></i>Logout</a>
   </div>
 </header>

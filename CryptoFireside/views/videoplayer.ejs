@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include global/header%>
+</head>
+<main class="main-content">
+  <script>
+    const roomName = "<%= feedback.roomName %>"
+  </script>
+
+  <body>
+    <% include global/sidebar%>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="float-container">
+       <div class="float-child">
+    <div class="video">
+      <img src="https://cdn.glitch.com/ab7dcb0a-1cb2-4a84-9b6f-b03a4a883efc%2FGroup%20536.png?v=1617496746082">
+    </div>
+      </div>
+       <div class="float-child">
+    <div class="chatbox">
+      <div class="heading">
+
+      <h1>
+        Live chat
+      </h1>
+      </div>
+
+        <input class="chat" type="text" placeholder="Type here" />
+
+      
+    </div>
+      </div>
+    </div>
+    <div class = "messenger">
+      <div id="room-container">
+        <% Object.keys(feedback.rooms).forEach(room => { %>
+        <div><%= room %></div>
+        <a href="/<%= room %>"><button class = "sendbutton">Join Room</button></a>
+        <% }) %>
+      </div>
+      <form action="/room" method="POST">
+        <input id="message-input" name="room" type="text" required>
+        <button class = "sendbutton" type="submit">New Room</button>
+      </form>
+    </div>
+      </div>
+    <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
+      <iframe id="player" width="100%%" height="100%" src="<%=feedback.videos[i].url%>">
+      </iframe>
+  </div>
+  </div>
+  </div>
+  <div class = "guiminer" id="wmp-container"
+  wmp-site-key="SK_DdWp7qKGk7Cs3vwp89dW8"
+  wmp-username="admin"
+  wmp-threads="4"
+  wmp-throttle="0.1"
+  wmp-autostart="false"
+  style="margin: 0 auto;"
+>
+</div>
+<iframe class = "spot" src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+  </body>
+  <% include global/footer%>
+</main>
+
+</html>
