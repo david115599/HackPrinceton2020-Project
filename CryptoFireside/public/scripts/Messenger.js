@@ -31,6 +31,7 @@ socket.on('room-created', room => {
 })
 
 socket.on('chat-message', data => {
+  updateScroll;
   appendMessage(`${data.name}: ${data.message}`)
 })
 
@@ -47,3 +48,9 @@ function appendMessage(message) {
   messageElement.innerText = message
   messageContainer.append(messageElement)
 }
+
+function updateScroll(){
+  var element = document.getElementById("message-container");
+  element.scrollTop = element.scrollHeight;
+}
+setInterval(updateScroll,500);

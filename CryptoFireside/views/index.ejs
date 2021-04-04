@@ -7,39 +7,75 @@
 <main class="main-content">
 
   <body>
-    <% include global/sidebar%>
     <META HTTP-EQUIV="CACHE-CONTROL" CONTENT="NO-CACHE">
-    <div class="container">
-      <div class="row">
-        <% for (var i =0; i < feedback.videos.length;  i++ ) { %>
-        <div class="col">
-          <div class="card" style="width: 30rem; height: 15rem;">
-            <iframe id="player" width="100%%" height="100%" src="<%=feedback.videos[i].url%>">
-            </iframe>
-          </div>
-        </div>
-        <%}%>
-        <% for (var i =0; i < 3-feedback.length%3;  i++ ) { %>
-        <div class="col">
-        </div>
+
+
+      <body>
+    
+        <br>
+        <br>
+        <br>
+        <br>
+    
+        <h1>
+          Popular Videos
+        </h1>
+      
+<div id="carousel" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel" data-slide-to="0" class="active"></li>
+    <% for (var i =1; i < feedback.videos.length;  i++ ) { %>
+      <li data-target="#carousel" data-slide-to="<%=i%>"></li>
+      <%}%>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <iframe  class = "ytframe"  id="player" width="100%%" height="100%" src="<%=feedback.videos[0].url%>">
+      </iframe>
+    </div>
+    <% for (var i =1; i < feedback.videos.length;  i++ ) { %>
+      <div class="carousel-item">
+        <iframe class = "ytframe" id="player" width="100%%" height="100%" src="<%=feedback.videos[i].url%>">
+        </iframe>
       </div>
       <%}%>
-      </div>
-      </div>
-    </div>
   </div>
-  </div>
-  </div>
+  <a class="carousel-control-prev" href="#carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+   
+          <h1>
+            Add a New Video
+          </h1>
+          
+          <p>
+            <label for="url">Enter a youtube embeded url video link:</label>
+          </p>
+      
+      <input type="url" name="url" id="url" placeholder="https://www.youtube.com/embed/placeholder" pattern="https://www.youtube.com/embed/.*" size="30" required="">
+          
+          <br>
+          <br>
+          <button class="main_action2">Play video</button>
+        
+      
+      </body>
 <div class = "messenger">
     <div id="room-container">
       <% Object.keys(feedback.rooms).forEach(room => { %>
       <div><%= room %></div>
-      <a href="/<%= room %>">Join</a>
+      <a href="/<%= room %>"><button class = "sendbutton">Join Room</button></a>
       <% }) %>
     </div>
     <form action="/room" method="POST">
-      <input name="room" type="text" required>
-      <button type="submit">New Room</button>
+      <input id="message-input" name="room" type="text" required>
+      <button class = "sendbutton" type="submit">New Room</button>
     </form>
   </div>
     </div>

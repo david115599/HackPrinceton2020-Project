@@ -31,20 +31,18 @@ app.use(express.urlencoded({extended: true}));
 // })
 
 app.get('/', function(request, response){
-  //console.log(videos);
-    var feedback = {
-      "videos":videos.videos,
-      "rooms":rooms
-    };
-    // for(i in feedback.videos){
-    //   console.log(feedback.videos[i]);
-    // }
-  
+
     response.status(200);
     response.setHeader('Content-Type', 'text/html')
-    response.render('login',{feedback});
+    response.render('landing',{});
   //console.log(videos.videos);
   });
+  app.get('/login', function(request, response){
+      response.status(200);
+      response.setHeader('Content-Type', 'text/html')
+      response.render('login',{});
+    //console.log(videos.videos);
+    });
 
 app.get('/index', function(request, response){
   //console.log(videos);

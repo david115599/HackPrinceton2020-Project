@@ -1,36 +1,58 @@
 
 .messenger {
   position: fixed;
-  top: 7vh;
-  height: 90vh;
-  width: 15%;
+  top:  8.9%;
+  height: 86%;
+  width: 18%;
   right: 0;
+  background-color: #333333;
+  color: #ffffff;
 }
+
   #message-container {
-    width: 15%;
+    width: 18%;
     max-width: 1200px;
+    overflow-y:auto;
+    color: #ffffff;
+    
   }
 
   #message-container div {
-    background-color: #CCC;
-    padding: 5px;
+    background-color: rgb(65, 65, 66);
+    padding: 8px;
+    border-radius: 80px;
+    margin: 15px;
+    color: #ffffff;
   }
 
   #message-container div:nth-child(2n) {
-    background-color: #FFF;
+    background-color: rgb(41, 40, 40);
+    border-radius: 80px;
+    padding: 8px;
+    color: #ffffff;
   }
 
   #send-container {
-    padding-bottom: 30px;
+    padding-bottom: 1%;
     bottom: 0;
-    background-color: white;
+    background-color: #333333;
     max-width: 1200px;
-    width: 15%;
+    width: 18%;
     display: flex;
     position: fixed;
     right: 0;
+    color: #ffffff;
   }
 
   #message-input {
     flex-grow: 1;
+    border-radius: 80px;
+    background-color: #333333;
+    color: #ffffff;
+  }
+  .sendbutton {
+    flex-grow: 1;
+    border-radius: 80px;
+    background-color: #4e4b4b;
+    color: #ffffff;
   }
