@@ -14,7 +14,7 @@ var CLIENT_ID = "87522016106-jjunc7arktqqojlpiemvkm8becqi0u16.apps.googleusercon
 const {OAuth2Client} = require('google-auth-library');
 const client = new OAuth2Client(CLIENT_ID);
 
-//const rooms = { "Just_Chilling":{},"Coding":{},"HomeWork":{},"3D_Printing":{},"CAD":{}};
+//const rooms = { "Just Chilling":{},"Coding":{},"HomeWork":{},"3D Printing":{},"CAD":{}};
 const rooms = {};
 
 

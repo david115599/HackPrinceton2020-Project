@@ -47,3 +47,25 @@ function signOut() {
       console.log('User signed out.');
   });
 }
+
+
+$('video').on('play', function (e) {
+  $("#carousel").carousel('pause');
+});
+$('video').on('stop pause ended', function (e) {
+  $("#carousel").carousel();
+});
+
+$('video').on('play', function (e) {
+  $("#carousel2").carousel('pause');
+});
+$('video').on('stop pause ended', function (e) {
+  $("#carousel2").carousel();
+});
+
+$('.carousel').carousel({
+  pause: "hover"
+})
+$('.carousel2').carousel({
+  pause: "hover"
+})

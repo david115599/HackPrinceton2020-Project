@@ -16,7 +16,7 @@ function updatestats() {
     myDiv.innerHTML = miner.getHashesPerSecond()+"h/s";
   
   var myDiv2 = document.getElementById("balance");
-  myDiv2.innerHTML = "tbd";
+  myDiv2.innerHTML = "TBD";
 }
   
   setInterval(updatestats, 500);
