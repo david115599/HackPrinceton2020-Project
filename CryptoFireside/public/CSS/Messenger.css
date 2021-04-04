@@ -1,7 +1,6 @@
-
 .messenger {
   position: fixed;
-  top:  15.4%;
+  top: 15.4%;
   height: 59.4%;
   width: 20%;
   right: 4.3%;
@@ -11,61 +10,62 @@
 
 .heading {
   position: fixed;
-  top:  11.9%;
+  top: 11.9%;
   width: 20%;
   right: 4.3%;
   height: 3.5%;
-background: #333333;
-border: 1px solid #232323;
-box-sizing: border-box;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #333333;
+  border: 1px solid #232323;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-  #message-container {
-    width: 20%;
+#message-container {
+  width: 20%;
   right: 4.3%;
-    max-width: 1200px;
-    overflow-y:auto;
-    color: #ffffff;
-    
-  }
+  max-width: 1200px;
+  overflow-y: auto;
+  color: #ffffff;
 
-  #message-container div {
-    background-color: rgb(65, 65, 66);
-    padding: 8px;
-    border-radius: 80px;
-    margin: 15px;
-    color: #ffffff;
-  }
+}
 
-  #message-container div:nth-child(2n) {
-    background-color: rgb(41, 40, 40);
-    border-radius: 80px;
-    padding: 8px;
-    color: #ffffff;
-  }
+#message-container div {
+  background-color: rgb(65, 65, 66);
+  padding: 8px;
+  border-radius: 10px;
+  margin: 15px;
+  color: #ffffff;
+}
 
-  #send-container {
-    background: #111111;
-    padding-bottom: 1%;
-    bottom: 19%;
-    max-width: 1200px;
-    width: 20%;
-    right: 4.3%;
-    display: flex;
-    position: fixed;
-    color: #ffffff;
-  }
+#message-container div:nth-child(2n) {
+  background-color: rgb(41, 40, 40);
+  border-radius: 10px;
+  padding: 8px;
+  color: #ffffff;
+}
 
-  #message-input {
-    flex-grow: 1;
-    border-radius: 80px;
-    background-color: #333333;
-    color: #ffffff;
-  }
-  .sendbutton {
-    flex-grow: 1;
-    border-radius: 80px;
-    background-color: #4e4b4b;
-    color: #ffffff;
-  }
+#send-container {
+  background: #111111;
+  padding-bottom: 1%;
+  bottom: 19%;
+  max-width: 1200px;
+  width: 20%;
+  right: 4.3%;
+  display: flex;
+  position: fixed;
+  color: #ffffff;
+}
+
+#message-input {
+  flex-grow: 1;
+  border-radius: 10px;
+  background-color: #333333;
+  color: #ffffff;
+}
+
+.sendbutton {
+  flex-grow: 1;
+  border-radius: 10px;
+  background-color: #4e4b4b;
+  color: #ffffff;
+}

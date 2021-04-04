@@ -11,7 +11,11 @@
 
 
       <body>
-    
+        <div class="heading">
+          <h1>
+            Live chat
+          </h1>
+        </div>
         <br>
         <br>
         <br>
@@ -69,11 +73,13 @@
       <% }) %>
     </div>
     <form action="/room" method="POST">
-      <input id="message-input" name="room" type="text" required>
+      <input id="message-input" name="room" type="text" required  placeholder="enter a room name">
       <button class = "sendbutton" type="submit">New Room</button>
     </form>
   </div>
     </div>
+    <iframe class="spotindex" src="https://open.spotify.com/embed/playlist/0vvXsWCC9xrXsKd4FyS8kM" width="300" height="380"
+      frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
   </body>
   <% include global/footer%>
 </main>
