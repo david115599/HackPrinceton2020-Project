@@ -7,7 +7,7 @@
     left: 15%;
   }
   .guiminer {
-    position: fixed;
-    bottom: 7vh;
-    right: 15%;
+    position: relative;
+    bottom: 0;
+    left: 20%;
   }
